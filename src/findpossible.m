@@ -12,9 +12,6 @@ function [allgraph] = findpossible(grid)
                 newgraph = grid;
                 newgraph(1,1) = {[0,0]};
                 allgraph(end+1) = {newgraph};
-                newgraph = grid;
-                newgraph(1,end) = {[0,0]};
-                allgraph(end+1) = {newgraph};
             else
                 startpoint = 1;
                 endpoint = i;
@@ -38,9 +35,6 @@ function [allgraph] = findpossible(grid)
                 newgraph = grid;
                 newgraph(1,1) = {[0,0]};
                 allgraph(end+1) = {newgraph};
-                newgraph = grid;
-                newgraph(1,end) = {[0,0]};
-                allgraph(end+1) = {newgraph};
             else
                 startpoint = 1;
                 endpoint = i;
@@ -59,9 +53,7 @@ function [allgraph] = findpossible(grid)
         symmetry = size(reverse,2)/2 + 0.5;
         for i = 1 : size(reverse,2) - 1
             if i == 1
-                newgraph = reverse;
-                newgraph(1,end) = {[0,0]};
-                allgraph(end+1) = {newgraph'};
+                continue;
             else
                 startpoint = 1;
                 endpoint = i;
