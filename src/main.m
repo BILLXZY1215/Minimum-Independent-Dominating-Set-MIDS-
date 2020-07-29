@@ -2,9 +2,9 @@ res = inputdlg({'Row:', 'Col:'}, 'Input', 1);
 row =  str2num(res{1});
 col = str2num(res{2});
 
-[allpointgraph] = mainfunc(row,col)
+[allpointgraph, allgraph] = mainfunc(row,col)
 
-function [allpointgraph] = mainfunc(row,col)
+function [allpointgraph, allgraph] = mainfunc(row,col)
     [grid] = gridgraph(row,col)
 
     x=[];
@@ -31,7 +31,7 @@ function [allpointgraph] = mainfunc(row,col)
     axis([xmin xmax ymin ymax]);
 
     [allgraph] = findpossible(grid);
-
+    
     allpointgraph = [];
     for a = 1:length(allgraph)
         comp = allgraph{1,a};
@@ -39,6 +39,8 @@ function [allpointgraph] = mainfunc(row,col)
         allpointgraph =[allpointgraph {pointSet}];
 %       allpointgraph = allpointgraph';
     end
+    
+    drawgraph(allpointgraph);
 end
 
 
